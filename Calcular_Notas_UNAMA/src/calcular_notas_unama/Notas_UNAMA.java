@@ -160,7 +160,7 @@ public class Notas_UNAMA extends javax.swing.JFrame {
                     
                     jresultado.setText("Você passou!!");
                     
-                }else if(calculo < Media_Para_Passar && calculo > 4){
+                }else if(calculo < Media_Para_Passar && calculo >= 4){
                     
                     jresultado.setText("<html>" +"Você foi para prova final!! " 
                             + "</br>" +"Precisa tirar " + prova_final + " para passar ");
