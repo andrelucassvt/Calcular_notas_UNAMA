@@ -117,9 +117,9 @@ public class Notas_UNAMA extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
    
-    int Quantidade_de_Clicks = 0;
+    int QuantidadeDeClicks = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(Quantidade_de_Clicks == 0){
+        if(QuantidadeDeClicks == 0){
             
             //NOTAC1
             //toda virgula virar ponto
@@ -173,14 +173,14 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             
             }
             
-            Quantidade_de_Clicks++;
+            QuantidadeDeClicks++;
             jButton1.setText("Reset");
-        }else if(Quantidade_de_Clicks == 1){
+        }else if(QuantidadeDeClicks == 1){
             
             jresultado.setText(" ");
             jnota1.setText("");
             jnota2.setText("");
-            Quantidade_de_Clicks =0;
+            QuantidadeDeClicks =0;
             jButton1.setText("Calcule");
         }
         
