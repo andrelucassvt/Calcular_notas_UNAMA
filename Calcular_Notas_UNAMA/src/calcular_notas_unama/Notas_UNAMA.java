@@ -121,7 +121,7 @@ public class Notas_UNAMA extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(QuantidadeDeClicks == 0){
             
-            //NOTAC1
+            //NOTA-1
             //toda virgula virar ponto
             jnota1.setText(jnota1.getText().replace(",", "."));
             
@@ -129,7 +129,7 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             double nota1 = parseDouble(jnota1.getText());
                 
             //////////////////////////////////////////////
-            //NOTA 2
+            //NOTA-2
             //toda virgula virar ponto
             jnota2.setText(jnota2.getText().replace(",", "."));
             
