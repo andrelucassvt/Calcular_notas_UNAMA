@@ -111,7 +111,6 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             //NOTA-1
             //toda virgula virar ponto
             jnota1.setText(jnota1.getText().replace(",", "."));
-            
             //conversao de String para double
             double nota1 = parseDouble(jnota1.getText());
                 
@@ -119,7 +118,6 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             //NOTA-2
             //toda virgula virar ponto
             jnota2.setText(jnota2.getText().replace(",", "."));
-            
             //conversao de String para double
             double nota2 = parseDouble(jnota2.getText());
             
@@ -135,34 +133,26 @@ public class Notas_UNAMA extends javax.swing.JFrame {
                  
             //////////////////////////////////////////////////
             //Soma as notas
-            double soma = (nota1 + nota2);
-            //media para passar
-            double Media_Para_Passar = 7.0;
-            //Media de reprovação
-            double reprovado = 3.0;
-            //calculo da unama
-            double calculo = (soma /2);
-            //calculo prova final
-            double prova_final = (10 - calculo) ;
+            double calcNotas = (nota1 + nota2) /2;
+            //Calculo prova final
+            double calcProvafinal = (10 - calcNotas);
             
                 //condicao passar e reprovar
-                if(calculo >= Media_Para_Passar){
+                if(calcNotas >= 7){
                     
                     JOptionPane.showMessageDialog(null, "Você passou!!");
-                   // jresultado.setText("Você passou!!");
                     
-                }else if(calculo < Media_Para_Passar && calculo >= 4){
+                }else if(calcNotas < 7 && calcNotas >= 4){
                     
                     
                     JOptionPane.showMessageDialog(null,"Você foi para prova final!! " 
-                          + "\nPrecisa tirar " + prova_final + " para passar " );
-                    //jresultado.setText("<html>" +"Você foi para prova final!! " 
-                      //      + "</br>" +"Precisa tirar " + prova_final + " para passar ");
+                          + "\nPrecisa tirar " + calcProvafinal + " para passar " );
                     
-                }else if(calculo < 4){
+                    
+                }else if(calcNotas < 4){
                     
                     JOptionPane.showMessageDialog(null, "Reprovado");
-                   // jresultado.setText("Reprovado!!");
+                  
                 }
             
             
