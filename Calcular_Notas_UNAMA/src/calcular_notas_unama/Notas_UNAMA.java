@@ -6,6 +6,7 @@
 package calcular_notas_unama;
 
 import static java.lang.Double.parseDouble;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,10 +36,9 @@ public class Notas_UNAMA extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jresultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calcular notas");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -62,35 +62,25 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Resultado:");
-
-        jresultado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jresultado.setForeground(new java.awt.Color(255, 0, 0));
-        jresultado.setText("                                   ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jnota1)
-                        .addComponent(jnota2))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jnota1)
+                                .addComponent(jnota2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jButton1)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,16 +95,13 @@ public class Notas_UNAMA extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jnota2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
    
     int QuantidadeDeClicks = 0;
@@ -138,9 +125,12 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             
             //Notas inválidas
             if(nota1 < 0 || nota2 < 0){
-                jresultado.setText("Nota inválida");
+                
+                JOptionPane.showMessageDialog(null, "Nota inválida");
+                //jresultado.setText("Nota inválida");
             }else if (nota1 >10 || nota2 >10){
-                jresultado.setText("Nota inválida");
+                JOptionPane.showMessageDialog(null, "Nota inválida");
+               // jresultado.setText("Nota inválida");
             }else{
                  
             //////////////////////////////////////////////////
@@ -158,16 +148,21 @@ public class Notas_UNAMA extends javax.swing.JFrame {
                 //condicao passar e reprovar
                 if(calculo >= Media_Para_Passar){
                     
-                    jresultado.setText("Você passou!!");
+                    JOptionPane.showMessageDialog(null, "Você passou!!");
+                   // jresultado.setText("Você passou!!");
                     
                 }else if(calculo < Media_Para_Passar && calculo >= 4){
                     
-                    jresultado.setText("<html>" +"Você foi para prova final!! " 
-                            + "</br>" +"Precisa tirar " + prova_final + " para passar ");
+                    
+                    JOptionPane.showMessageDialog(null,"Você foi para prova final!! " 
+                          + "\nPrecisa tirar " + prova_final + " para passar " );
+                    //jresultado.setText("<html>" +"Você foi para prova final!! " 
+                      //      + "</br>" +"Precisa tirar " + prova_final + " para passar ");
                     
                 }else if(calculo < 4){
                     
-                    jresultado.setText("Reprovado!!");
+                    JOptionPane.showMessageDialog(null, "Reprovado");
+                   // jresultado.setText("Reprovado!!");
                 }
             
             
@@ -177,7 +172,7 @@ public class Notas_UNAMA extends javax.swing.JFrame {
             jButton1.setText("Reset");
         }else if(QuantidadeDeClicks == 1){
             
-            jresultado.setText(" ");
+            //jresultado.setText(" ");
             jnota1.setText("");
             jnota2.setText("");
             QuantidadeDeClicks =0;
@@ -229,9 +224,7 @@ public class Notas_UNAMA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jnota1;
     private javax.swing.JTextField jnota2;
-    private javax.swing.JLabel jresultado;
     // End of variables declaration//GEN-END:variables
 }
