@@ -5,6 +5,7 @@
  */
 package calcular_notas_unama;
 
+import java.awt.event.KeyEvent;
 import static java.lang.Double.parseDouble;
 import javax.swing.JOptionPane;
 
@@ -54,6 +55,11 @@ public class NotasUNAMA extends javax.swing.JFrame {
         jnota2.setBackground(new java.awt.Color(0, 0, 0));
         jnota2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jnota2.setForeground(new java.awt.Color(255, 255, 255));
+        jnota2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jnota2KeyPressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,10 +151,9 @@ public class NotasUNAMA extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    int QuantidadeDeClicks = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(QuantidadeDeClicks == 0){
-
+        
+            try{
             //NOTA-1
             //toda virgula virar ponto
             jnota1.setText(jnota1.getText().replace(",", "."));
@@ -164,13 +169,14 @@ public class NotasUNAMA extends javax.swing.JFrame {
 
             //Notas inválidas
             if(nota1 < 0 || nota2 < 0){
-                
-                JOptionPane.showMessageDialog(null, "Nota inválida");
-                
-                //jresultado.setText("Nota inválida");
+              
+                JOptionPane.showMessageDialog(null, "Nota inválida", "Erro!", JOptionPane.ERROR_MESSAGE);
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
             }else if (nota1 >10 || nota2 >10){
-                JOptionPane.showMessageDialog(null, "Nota inválida");
-                // jresultado.setText("Nota inválida");
+                 JOptionPane.showMessageDialog(null, "Nota inválida", "Erro!", JOptionPane.ERROR_MESSAGE);
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
             }else{
 
                 //////////////////////////////////////////////////
@@ -181,34 +187,100 @@ public class NotasUNAMA extends javax.swing.JFrame {
 
                 //condicao passar e reprovar
                 if(calcNotas >= 7){
-
+                     
                     JOptionPane.showMessageDialog(null, "Você passou!!");
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
 
                 }else if(calcNotas < 7 && calcNotas >= 4){
 
                     JOptionPane.showMessageDialog(null,"Você foi para prova final!! "
                         + "\nPrecisa tirar " + calcProvafinal + " para passar " );
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
 
                 }else if(calcNotas < 4){
 
                     JOptionPane.showMessageDialog(null, "Reprovado");
-
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
                 }
 
             }
-
-            QuantidadeDeClicks++;
-            jButton1.setText("Reset");
-        }else if(QuantidadeDeClicks == 1){
-
-            //jresultado.setText(" ");
-            jnota1.setText("");
-            jnota2.setText("");
-            QuantidadeDeClicks =0;
-            jButton1.setText("Calcule");
-        }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro!! Digite apenas numeros", "Erro", JOptionPane.ERROR_MESSAGE);
+                this.jnota1.setText("");
+                this.jnota2.setText("");
+            }
+            
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jnota2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jnota2KeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            
+            
+            try{
+            //NOTA-1
+            //toda virgula virar ponto
+            jnota1.setText(jnota1.getText().replace(",", "."));
+            //conversao de String para double
+            double nota1 = parseDouble(jnota1.getText());
+
+            //////////////////////////////////////////////
+            //NOTA-2
+            //toda virgula virar ponto
+            jnota2.setText(jnota2.getText().replace(",", "."));
+            //conversao de String para double
+            double nota2 = parseDouble(jnota2.getText());
+
+            //Notas inválidas
+            if(nota1 < 0 || nota2 < 0){
+               JOptionPane.showMessageDialog(null, "Nota inválida", "Erro!", JOptionPane.ERROR_MESSAGE);
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
+            }else if (nota1 >10 || nota2 >10){
+                 JOptionPane.showMessageDialog(null, "Nota inválida", "Erro!", JOptionPane.ERROR_MESSAGE);
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
+            }else{
+
+                //////////////////////////////////////////////////
+                //Soma as notas
+                double calcNotas = (nota1 + nota2) /2;
+                //Calculo prova final
+                double calcProvafinal = (10 - calcNotas);
+
+                //condicao passar e reprovar
+                if(calcNotas >= 7){
+                     
+                    JOptionPane.showMessageDialog(null, "Você passou!!");
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
+                }else if(calcNotas < 7 && calcNotas >= 4){
+
+                    JOptionPane.showMessageDialog(null,"Você foi para prova final!! "
+                        + "\nPrecisa tirar " + calcProvafinal + " para passar " );
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
+                }else if(calcNotas < 4){
+
+                    JOptionPane.showMessageDialog(null, "Reprovado");
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
+                }
+
+            }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Erro!! Digite apenas numeros", "Erro", JOptionPane.ERROR_MESSAGE);
+                    this.jnota1.setText("");
+                    this.jnota2.setText("");
+            }
+           
+        }
+    }//GEN-LAST:event_jnota2KeyPressed
 
     /**
      * @param args the command line arguments
